@@ -1,14 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-// Define the shape of your Redux state
-interface RootState {
-  contentLibrary: {
-    items: ContentItem[];
-    loading: boolean;
-    error: string | null;
-  };
-}
+import type { RootState } from '../store/store';
 
 // Define the shape of a content item
 interface ContentItem {
@@ -27,7 +19,7 @@ const ContentLibrary: React.FC = () => {
     <div>
       <h2>Content Library</h2>
       <ul>
-        {items.map((item) => (
+        {items.map((item: ContentItem) => (
           <li key={item.id}>{item.title}</li>
         ))}
       </ul>

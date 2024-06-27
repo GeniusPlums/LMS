@@ -8,3 +8,7 @@ export async function createCourse(courseData) {
 }
 
 // Implement other CRUD operations
+// services/courseService.ts
+export const saveCourse = async (course: Course) => {
+    // Implementation of saveCourse
+  };
