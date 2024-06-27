@@ -1,6 +1,6 @@
 // pages/api/auth/[...nextauth].ts
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import Providers from 'next-auth/react';
 
 export default NextAuth({
   providers: [
