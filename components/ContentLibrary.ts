@@ -1,12 +1,37 @@
-// components/ContentLibrary.ts
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const ContentLibrary = () => {
-  const content = useSelector(state => state.contentLibrary);
+// Define the shape of your Redux state
+interface RootState {
+  contentLibrary: {
+    items: ContentItem[];
+    loading: boolean;
+    error: string | null;
+  };
+}
+
+// Define the shape of a content item
+interface ContentItem {
+  id: string;
+  title: string;
+  // Add other properties as needed
+}
+
+const ContentLibrary: React.FC = () => {
+  const { items, loading, error } = useSelector((state: RootState) => state.contentLibrary);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
-    // Render content library UI
+    <div>
+      <h2>Content Library</h2>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>{item.title}</li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
